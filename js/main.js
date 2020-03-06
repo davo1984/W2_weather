@@ -106,15 +106,15 @@ function goFetch() {
             console.log('icon goes here='+srcIconWhere);
             srcIcon.id = "id";
             srcIcon.className = "class";
-            srcIcon.src = "http://openweathermap.org/img/wn/"
+            srcIcon.src = "https://openweathermap.org/img/wn/"
                 + jsonText.weather[0].icon + "@2x.png";            // image.src = "IMAGE URL/PATH"
             srcIconWhere.appendChild(srcIcon);
 
-            console.log("http://openweathermap.org/img/wn/"+ jsonText.weather[0].icon + "@2x.png")
+            console.log("https://openweathermap.org/img/wn/"+ jsonText.weather[0].icon + "@2x.png")
 
             document.getElementById("IDdesc").innerHTML = jsonText.weather[0].description;
 
-            document.getElementById("IDicon").src = "http://openweathermap.org/img/wn/" 
+            document.getElementById("IDicon").src = "https://openweathermap.org/img/wn/" 
                     + jsonText.weather[0].icon + "@2x.png";
 
             //console.log('FETCHED: ' + jsonText.weather[0].description);
