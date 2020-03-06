@@ -1,7 +1,60 @@
 //set temp scale to fahrenheit or celsius
 let scale = 'f';
+jsonText = '';
+
 function setScale() {
-    
+
+    let y = '';
+    let x = document.getElementById("IDscale");
+    //x.innerHTML = "XXXXXXX";
+
+    //if (x.innerHTML === "Fahrenheit") {
+    if (scale === "f") {
+        scale = 'c';
+        x.innerHTML = "Celsius"; //change button text
+
+        //convert the temperatures    
+        x = document.getElementById("IDtemp");
+        y = document.getElementById("IDtemp").innerHTML;
+        y = Math.round((y - 32) * 5 /9);
+        //(32°F − 32) × 5 / 9 = 0°C
+
+        document.getElementById("IDtemp").innerHTML = y;
+
+        x = document.getElementById("IDmin");
+        y = document.getElementById("IDmin").innerHTML;
+        y = Math.round((y - 32) * 5 / 9);
+        document.getElementById("IDmin").innerHTML = y;
+
+        x = document.getElementById("IDmax");
+        y = document.getElementById("IDmax").innerHTML;
+        y = Math.round((y - 32) * 5 / 9);
+        document.getElementById("IDmax").innerHTML = y;
+
+    } else {
+        scale = 'f';
+        //console.log('x=' + x + ' y=' + y);
+
+        x.innerHTML = "Fahrenheit"; //change button text
+
+        //convert the temperatures    
+        x = document.getElementById("IDtemp");
+        y = document.getElementById("IDtemp").innerHTML;
+        y = Math.round(y * 9 / 5 + 32);
+        document.getElementById("IDtemp").innerHTML = y;
+
+        x = document.getElementById("IDmin");
+        y = document.getElementById("IDmin").innerHTML;
+        y = Math.round(y * 9 / 5 + 32);
+        document.getElementById("IDmin").innerHTML = y;
+
+        x = document.getElementById("IDmax");
+        y = document.getElementById("IDmax").innerHTML;
+        y = Math.round(y * 9 / 5 + 32);
+        document.getElementById("IDmax").innerHTML = y;
+
+        tMin = Math.round((y - 273.15) * 9 / 5 + 32);
+    }
 }
 
 
@@ -137,3 +190,4 @@ function displayError(errMsg) {
     document.getElementById("IDerror2").innerHTML = errMsg;
     document.getElementById("IDerror2").innerHTML = errMsg;
 }
+

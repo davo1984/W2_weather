@@ -59,7 +59,7 @@
                 <div class="col">
                     <!--Temperature-Table-->
                     <table class="table table-striped table-inverse table-responsive">
-                        <thead class="thead-inverse">
+                        <thead class="thead-inverse text-center">
                             <tr>
                                 <th>Temp</th>
                                 <th>Min</th>
@@ -68,18 +68,26 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td id="IDtemp" scope="row">R0</td>
-                                <td id="IDmax">R1</td>
-                                <td id="IDmin">R2</td>
+                                <td id="IDtemp" scope="row" class="text-center">R0</td>
+                                <td id="IDmax" class="text-center">R1</td>
+                                <td id="IDmin" class="text-center">R2</td>
                             </tr>
                         </tbody>
                     </table>
 
+                    <!--fahrenheit or celsius-->
+                    <div class="col">
+
+                        <a onclick="setScale()" name="NAMEscale" id="IDscale" class="btn btn-light" href="#"
+                            role="button">
+                            Fahrenheit
+                        </a>
+                    </div>
                 </div>
                 <div id="desc-icon-col" class="col">
                     <div class="row">
                         <div class="col">
-                            <h3 id="IDdesc"></h3>IDdesc
+                            <h3 id="IDdesc"></h3>
                         </div>
                     </div>
                     <div class="row">
