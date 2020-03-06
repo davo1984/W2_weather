@@ -1,3 +1,10 @@
+//set temp scale to fahrenheit or celsius
+let scale = 'f';
+function setScale() {
+    
+}
+
+
 // fetch the weather data & place in JSON
 function goFetch() {
     let whichZip = document.getElementById("IDzip").value;
@@ -32,21 +39,33 @@ function goFetch() {
                 = jsonText.name;
 
             console.log('temp=' + jsonText.main.temp);
-            document.getElementById("IDtemp").innerHTML
-                = jsonText.main.temp;
-            document.getElementById("IDmax").innerHTML
-                = jsonText.main.temp_max;
-            document.getElementById("IDmin").innerHTML
-                = jsonText.main.temp_min;
             console.log("jsonText.weather.description=" + jsonText.weather.description);
             console.log({ jsonText });
+            displayTemp(jsonText);
             console.log(' between Temp & Desc' + jsonText.main.temp + ' ' + jsonText.weather.description);
             document.getElementById("IDdesc").innerHTML
                 = jsonText.weather[0].description;
-            //displayConditions(weatherData);
+                
 
-            console.log('FETCHED: ' + jsonText.weather[0].description);
-            console.log(jsonText.main.temp);
+            //create obj (srcIcon) that will be added to html. EXPLAIN THIS!!!
+            let srcIcon = document.createElement("src");  // create/add image element
+            let srcIconWhere = document.getElementById("IDicon"); //where does it go
+            console.log('icon goes here='+srcIconWhere);
+            srcIcon.id = "id";
+            srcIcon.className = "class";
+            srcIcon.src = "http://openweathermap.org/img/wn/"
+                + jsonText.weather[0].icon + "@2x.png";            // image.src = "IMAGE URL/PATH"
+            srcIconWhere.appendChild(srcIcon);
+
+            console.log("http://openweathermap.org/img/wn/"+ jsonText.weather[0].icon + "@2x.png")
+
+            document.getElementById("IDdesc").innerHTML = jsonText.weather[0].description;
+
+            document.getElementById("IDicon").src = "http://openweathermap.org/img/wn/" 
+                    + jsonText.weather[0].icon + "@2x.png";
+
+            //console.log('FETCHED: ' + jsonText.weather[0].description);
+            //console.log(jsonText.main.temp);
         }).catch(function (err) {
             //console.log('ERROR=' + err+'=');
             console.log({err});
@@ -64,22 +83,49 @@ function displayTemp(weatherJ) {
 
     // todo kelvin to F 
     // todo choose C or F button
+    let t = tMax = tMin = 0;
+    console.log(weatherJ.main.temp+' '+weatherJ.main.temp_max);
+    if (scale=='c') {
+        t = Math.round(weatherJ.main.temp - 273.15);
+        tMin = Math.round(weatherJ.main.temp_min - 273.15);
+        tMax = Math.round(weatherJ.main.temp_max - 273.15);
+    } else {
+        t = Math.round((weatherJ.main.temp - 273.15) * 9 / 5 + 32);
+        tMax = Math.round((weatherJ.main.temp_max - 273.15) * 9 / 5 + 32);
+        tMin = Math.round((weatherJ.main.temp_min - 273.15) * 9 / 5 + 32);
+    }
+    document.getElementById("IDtemp").innerHTML = t;
+    document.getElementById("IDmax").innerHTML = tMax;
+    document.getElementById("IDmin").innerHTML = tMin;
 
-    console.log('process Temp=' + weather.main.temp);
+    console.log('process Temp=' + t);
 }
 
 function displayConditions(weatherJ) {
-    console.log('process Conditions=' + weatherJ.weather.description);
+    console.log('process Conditions=' + jsonText.weather.description);
 
 }
 
 function displayError(errMsg) {
     console.log('errMsg=' + errMsg);
-    let classInfo = mainC = "";
+    let classInfo = "";
+    let mainC = "";
 
     // make main container invisible
-    classInfo = document.getElementById("IDmain");  //use this
+    classInfo = document.getElementById("IDmain");
     mainC = classInfo.getAttribute("class");
+
+    console.log('does it have d-none? ' + ' search returns=' + mainC.search("d-none"));
+    if (mainC.search("d-none") >= 0) {
+        console.log('Not toggled!=' + mainC.search("d-none"));
+    } else {
+        classInfo.classList.toggle("d-none");
+        console.log('toggled');
+    }
+
+    // make main container invisible
+    //classInfo = document.getElementById("IDmain");  //use this
+    //mainC = classInfo.getAttribute("class");
     if (mainC.search("d-none") < 0) {
         //classInfo.classList.toggle("d-none");    //use this
     }
@@ -87,25 +133,6 @@ function displayError(errMsg) {
     //write error popup        
     document.getElementById("IDerror").innerHTML = errMsg;
     $('#IDerrPopUp').modal('show');  // create error message & move this to error function
-
-
-    // make error alert Visible
-    //classInfo = document.getElementById("IDerrPopUp");  //use this
-    //mainC = classInfo.getAttribute("class");
-    //if (mainC.search("d-none") < 0) {
-    //    classInfo.classList.toggle("d-none");    //use this
-    //}
-
-    //let mainC = document.querySelector('#IDmain');
-    //classInfo = mainC.getAttribute("class");
-    //classInfo = classInfo.replace("d-none", "d-block");
-    //mainC.setAttribute("class", classInfo);
-
-    // make error alert Visible
-    //let errorC = document.querySelector('#IDmain');
-    //let errorInfo = mainC.getAttribute("class");
-    //errorInfo = errorInfo.replace("d-block", "d-none");
-    //errorC.setAttribute("class", errorInfo);
 
     document.getElementById("IDerror2").innerHTML = errMsg;
     document.getElementById("IDerror2").innerHTML = errMsg;

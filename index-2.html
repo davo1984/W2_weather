@@ -44,12 +44,12 @@
         <div id="IDmain" class="container d-none">
             <!--Row1 City-->
             <div class="container">
-                <div class="row">
-                    <div class="card">
-                        <div class="card-body">
+                <div class="row col-12">
+                    <!--<div> removed class="card"-->
+                        <div class="col-12 p-4"> <!--removed class="card"-->
                             <h4 class="card-title text-center">City</h4>
                             <p id="IDcity" class="card-text text-center">Mayberry</p>
-                        </div>
+                        <!--/div-->
                     </div>
                 </div>
             </div>
@@ -73,16 +73,18 @@
                             </tr>
                         </tbody>
                     </table>
+                    
                 </div>
                 <div id="desc-icon-col" class="col">
                     <div class="row">
-                        <div id="IDdesc" class="col">
-                            IDdesc
+                        <div class="col">
+                            <h3 id="IDdesc"></h3>IDdesc
                         </div>
                     </div>
-                    <div id="IDicon" class="row">
+                    <div class="row">
                         <div class="col">
-                            IDicon
+                            <a name="" class="btn btn-light" href="#" role="button">
+                                <img id="IDicon" src=""></a>
                         </div>
                     </div>
                 </div>
@@ -119,7 +121,7 @@ Button trigger modal -->
                         </div>
                     </div>
                 </div>
-                <!--dismissible alert-->
+                <!--dismissible alert--
                 <div class="alert alert-primary alert-dismissible fade show d-none" role="alert">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -129,13 +131,11 @@ Button trigger modal -->
                     You should check in on some of those fields below.
                 </div>
                 <script>
-                        < !--$("IDerr2-close").alert(); -->
+                        $("IDerr2-close").alert();
                 </script>
+                ---------->
             </div>
         </div>
-
-
-
     </div>
     <!--Main Display end-->
 
