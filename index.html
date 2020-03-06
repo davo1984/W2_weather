@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Async Weather</title>
+    <title>2-Weather-Sandbox</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -44,11 +44,13 @@
         <div id="IDmain" class="container d-none">
             <!--Row1 City-->
             <div class="container">
-                <div class="row">
-                    <div class="card"></div>
-                    <div class="card-body">
+                <div class="row col-12">
+                    <!--<div> removed class="card"-->
+                    <div class="col-12 p-4">
+                        <!--removed class="card"-->
                         <h4 class="card-title text-center">City</h4>
                         <p id="IDcity" class="card-text text-center">Mayberry</p>
+                        <!--/div-->
                     </div>
                 </div>
             </div>
@@ -72,16 +74,18 @@
                             </tr>
                         </tbody>
                     </table>
+
                 </div>
                 <div id="desc-icon-col" class="col">
                     <div class="row">
-                        <div id="IDdesc" class="col">
-                            IDdesc
+                        <div class="col">
+                            <h3 id="IDdesc"></h3>IDdesc
                         </div>
                     </div>
-                    <div id="IDicon" class="row">
+                    <div class="row">
                         <div class="col">
-                            IDicon
+                            <a name="" class="btn btn-light" href="#" role="button">
+                                <img id="IDicon" src=""></a>
                         </div>
                     </div>
                 </div>
@@ -91,19 +95,46 @@
         <div class="row">
             <div class="col-12">
 
-                <!--dismissible alert
-                    <div class="alert alert-primary alert-dismissible fade show d-none" role="alert">
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                            <span class="sr-only">Close</span>
-                        </button>
-                        <strong id="IDerror2">Holy guacamole!</strong>
-                        You should check in on some of those fields below.
+                <!-- Button trigger modal 
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modelId">
+  Launch
+</button>
+Button trigger modal -->
+
+                <!-- Modal -->
+                <div class="modal fade" id="IDerrPopUp" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+                    aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">No weather information for you!</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div id="IDerror" class="modal-body">
+                                Body
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+                            </div>
+                        </div>
                     </div>
-                    <script>
+                </div>
+                <!--dismissible alert--
+                <div class="alert alert-primary alert-dismissible fade show d-none" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    <strong id="IDerror2">Holy guacamole!</strong>
+                    You should check in on some of those fields below.
+                </div>
+                <script>
                         $("IDerr2-close").alert();
-                    </script>
-                -->
+                </script>
+                ---------->
             </div>
         </div>
     </div>
