@@ -68,7 +68,7 @@ function goFetch() {
         console.log(displayError);
 
     } else {
-        fetch("http://api.openweathermap.org/data/2.5/weather?zip=" + whichZip + ",us&appid=70078e74187791740cd2f096f55ee289").then(function (response) {
+        fetch("https://api.openweathermap.org/data/2.5/weather?zip=" + whichZip + ",us&appid=70078e74187791740cd2f096f55ee289").then(function (response) {
             return response.json();
         }).then(function (jsonText) {
             let weatherData = '';
